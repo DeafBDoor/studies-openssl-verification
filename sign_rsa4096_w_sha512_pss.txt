@@ -1,0 +1,5 @@
+# To sign
+openssl pkeyutl -sign -rawin -in myfile.txt -inkey priv_key.pem -out myfile.txt.signature -pkeyopt rsa_padding_mode:pss -pkeyopt rsa_pss_saltlen:max -pkeyopt rsa_mgf1_md:SHA512 -digest sha512
+
+# To verify
+openssl pkeyutl -verify -rawin -pubin -inkey pub_key.pem -digest sha512 -in myfile.txt -sigfile myfile.txt.signature -pkeyopt rsa_padding_mode:pss -pkeyopt rsa_pss_saltlen:max -pkeyopt rsa_mgf1_md:SHA512
